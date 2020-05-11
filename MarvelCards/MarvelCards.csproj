@@ -1,0 +1,54 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="4.6.0.726" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.1" />
+    <PackageReference Include="CardsView" Version="2.6.1" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="1.4.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="res\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="images\cap.png" />
+    <None Remove="images\hulk.png" />
+    <None Remove="images\thor.png" />
+    <None Remove="images\hawk.png" />
+    <None Remove="images\nat.png" />
+    <None Remove="images\iron.png" />
+    <None Remove="res\AvengeroRegular-zvgl.ttf" />
+    <None Remove="res\MarvelRegular-Dj83.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="res\cap.png">
+      <LogicalName>cap.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\hulk.png">
+      <LogicalName>hulk.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\thor.png">
+      <LogicalName>thor.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\hawk.png">
+      <LogicalName>hawk.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\nat.png">
+      <LogicalName>nat.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\iron.png">
+      <LogicalName>iron.png</LogicalName>
+    </EmbeddedResource>
+    <EmbeddedResource Include="res\AvengeroRegular-zvgl.ttf" />
+    <EmbeddedResource Include="res\MarvelRegular-Dj83.ttf" />
+  </ItemGroup>
+</Project>

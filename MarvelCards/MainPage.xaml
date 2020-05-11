@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:MarvelCards"
+             xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+             xmlns:proc="clr-namespace:PanCardView.Processors;assembly=PanCardView"
+             x:DataType="local:MainViewModel"
+             Padding="0, 0"
+             x:Class="MarvelCards.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout>
+        <Label Text="AVENGERS"
+               x:Name="AvengersLabel"
+               TextColor="#F0131E"
+               FontFamily="AvengeroRegular"
+               VerticalOptions="CenterAndExpand"
+               FontSize="35" HorizontalOptions="Center"/>
+        <cards:CoverFlowView
+            ItemAppeared="OnCoverFlowViewItemAppeared"
+            SizeChanged="OnCoverFlowViewSizeChanged"
+            VerticalOptions="StartAndExpand"
+            ItemsSource="{Binding Heroes}"
+            IsViewReusingEnabled="False"
+            PositionShiftValue="110">
+
+            <x:Arguments>
+                <proc:CoverFlowProcessor ScaleFactor="0.7" OpacityFactor="0.1" />
+            </x:Arguments>
+
+            <cards:CoverFlowView.ItemTemplate>
+                <DataTemplate>
+                    <yummy:PancakeView
+                        Margin="60, 0"
+                        x:DataType="local:HeroModel"
+                        BackgroundGradientStops="{Binding Color}"
+                        CornerRadius="10, 60, 60, 10">
+
+                        <AbsoluteLayout>
+                            <Expander AbsoluteLayout.LayoutBounds="0, .5, -1, -1"
+                                      AbsoluteLayout.LayoutFlags="PositionProportional">
+                                <Expander.Header>
+                                    <Image Source="{Binding Image}" />
+                                </Expander.Header>
+
+                                <Expander.ContentTemplate>
+                                    <DataTemplate>
+                                        <ScrollView Padding="15, 0">
+                                            <Label Text="{Binding Facts}"
+                                                   FontSize="30"
+                                                   FontFamily="MarvelRegular"
+                                                   TextColor="Black"/>
+                                        </ScrollView>
+                                    </DataTemplate>
+                                </Expander.ContentTemplate>
+
+                            </Expander>
+
+                            <StackLayout Padding="15"
+                                         AbsoluteLayout.LayoutBounds="1, 1, -1, -1"
+                                         AbsoluteLayout.LayoutFlags="PositionProportional">
+                                <Label Text="{Binding Alias}"
+                                       FontSize="23"
+                                       TextColor="Black"
+                                       HorizontalTextAlignment="End"
+                                       FontFamily="AvengeroRegular"/>
+                                <StackLayout Orientation="Horizontal"
+                                             HorizontalOptions="End">
+                                    <Label Text="{Binding Name}"
+                                       FontSize="16"
+                                       HorizontalTextAlignment="End"
+                                       TextColor="White"
+                                       FontFamily="AvengeroRegular"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </AbsoluteLayout>
+
+                    </yummy:PancakeView>
+                </DataTemplate>
+            </cards:CoverFlowView.ItemTemplate>
+
+        </cards:CoverFlowView>
+    </StackLayout>
+
+</ContentPage>
